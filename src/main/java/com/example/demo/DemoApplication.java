@@ -27,6 +27,8 @@ public class DemoApplication {
 		//LOGGER.info("INFO -> " + response.toString());
 
 		ListContainerInstancesRequest listContainerInstancesRequest = new ListContainerInstancesRequest();
+		listContainerInstancesRequest.setCluster("ecs-cluster-tef");
+		
 		ListContainerInstancesResult listTaskDefinitionFamiliesResult = client.listContainerInstances(listContainerInstancesRequest);
 
 		LOGGER.info("INFO -> " + listTaskDefinitionFamiliesResult.toString());
