@@ -3,8 +3,7 @@ package com.example.demo;
 import com.amazonaws.services.ecs.AmazonECS;
 import com.amazonaws.services.ecs.AmazonECSClientBuilder;
 import com.amazonaws.services.ecs.model.ListContainerInstancesRequest;
-import com.amazonaws.services.ecs.model.ListTaskDefinitionFamiliesRequest;
-import com.amazonaws.services.ecs.model.ListTaskDefinitionFamiliesResult;
+import com.amazonaws.services.ecs.model.ListContainerInstancesResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -22,13 +21,13 @@ public class DemoApplication {
 
 	public static void access(){
 		AmazonECS client = AmazonECSClientBuilder.standard().build();
-		ListTaskDefinitionFamiliesRequest request = new ListTaskDefinitionFamiliesRequest();
-		ListTaskDefinitionFamiliesResult response = client.listTaskDefinitionFamilies(request);
 
-		LOGGER.info("INFO -> " + response.toString());
+		//ListTaskDefinitionFamiliesRequest request = new ListTaskDefinitionFamiliesRequest();
+		//ListTaskDefinitionFamiliesResult response = client.listTaskDefinitionFamilies(request);
+		//LOGGER.info("INFO -> " + response.toString());
 
 		ListContainerInstancesRequest listContainerInstancesRequest = new ListContainerInstancesRequest();
-		ListTaskDefinitionFamiliesResult listTaskDefinitionFamiliesResult = new ListTaskDefinitionFamiliesResult();
+		ListContainerInstancesResult listTaskDefinitionFamiliesResult = client.listContainerInstances(listContainerInstancesRequest);
 
 		LOGGER.info("INFO -> " + listTaskDefinitionFamiliesResult.toString());
 
