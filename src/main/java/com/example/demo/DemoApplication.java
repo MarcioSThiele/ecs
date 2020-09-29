@@ -2,12 +2,14 @@ package com.example.demo;
 
 import com.amazonaws.services.ecs.AmazonECS;
 import com.amazonaws.services.ecs.AmazonECSClientBuilder;
-import com.amazonaws.services.ecs.model.ListContainerInstancesRequest;
-import com.amazonaws.services.ecs.model.ListContainerInstancesResult;
+import com.amazonaws.services.ecs.model.DescribeTasksRequest;
+import com.amazonaws.services.ecs.model.DescribeTasksResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -26,13 +28,23 @@ public class DemoApplication {
 		//ListTaskDefinitionFamiliesResult response = client.listTaskDefinitionFamilies(request);
 		//LOGGER.info("INFO -> " + response.toString());
 
-		ListContainerInstancesRequest listContainerInstancesRequest = new ListContainerInstancesRequest();
-		listContainerInstancesRequest.setCluster("ecs-cluster-tef");
+		//ListContainerInstancesRequest listContainerInstancesRequest = new ListContainerInstancesRequest();
+		//listContainerInstancesRequest.setCluster("ecs-cluster-tef");
+		//ListContainerInstancesResult listTaskDefinitionFamiliesResult = client.listContainerInstances(listContainerInstancesRequest);
+		//LOGGER.info("INFO -> " + listTaskDefinitionFamiliesResult.toString());
 
-		ListContainerInstancesResult listTaskDefinitionFamiliesResult = client.listContainerInstances(listContainerInstancesRequest);
+		//DescribeContainerInstancesRequest describeContainerInstancesRequest = new DescribeContainerInstancesRequest();
+		//describeContainerInstancesRequest.setCluster("ecs-cluster-tef");
 
-		LOGGER.info("INFO -> " + listTaskDefinitionFamiliesResult.toString());
+		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
+		describeTasksRequest.setCluster("ecs-cluster-tef");
+		describeTasksRequest.setTasks(Arrays.asList("service-tef"));
 
+		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
+
+		//List<Task> list = describeTasksResult.getTasks();
+
+		LOGGER.info("TESTE -> " + describeTasksResult.toString());
 
 	}
 }
