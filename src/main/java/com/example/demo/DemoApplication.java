@@ -23,11 +23,8 @@ public class DemoApplication {
 		AmazonECS client = AmazonECSClientBuilder.standard().build();
 
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
-		describeTasksRequest.setCluster("ecs-cluster-tef");
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
-
-		//List<Task> list = describeTasksResult.getTasks();
 
 		LOGGER.info("TESTE -> " + describeTasksResult);
 
