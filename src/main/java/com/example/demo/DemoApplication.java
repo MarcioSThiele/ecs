@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
-
 @SpringBootApplication
 public class DemoApplication {
 
@@ -38,7 +36,6 @@ public class DemoApplication {
 
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
 		describeTasksRequest.setCluster("ecs-cluster-tef");
-		describeTasksRequest.setTasks(Arrays.asList("service-tef"));
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
 
