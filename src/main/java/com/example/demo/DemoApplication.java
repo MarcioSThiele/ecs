@@ -28,15 +28,12 @@ public class DemoApplication {
 
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
 		describeTasksRequest.setCluster("ecs-cluster-tef");
-		describeTasksRequest.setTasks(Arrays.asList("0190504cd8a548858121e7a53976c632"));
+		describeTasksRequest.setTasks(Arrays.asList("352c52c8ce1d48ebbebae3da4f6829b5"));
+
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
 
 		List<Task> listTask = describeTasksResult.getTasks();
-
-		LOGGER.info("TESTE -> " + listTask.toString());
-
-
 
 	}
 }
