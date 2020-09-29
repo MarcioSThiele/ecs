@@ -22,18 +22,6 @@ public class DemoApplication {
 	public static void access(){
 		AmazonECS client = AmazonECSClientBuilder.standard().build();
 
-		//ListTaskDefinitionFamiliesRequest request = new ListTaskDefinitionFamiliesRequest();
-		//ListTaskDefinitionFamiliesResult response = client.listTaskDefinitionFamilies(request);
-		//LOGGER.info("INFO -> " + response.toString());
-
-		//ListContainerInstancesRequest listContainerInstancesRequest = new ListContainerInstancesRequest();
-		//listContainerInstancesRequest.setCluster("ecs-cluster-tef");
-		//ListContainerInstancesResult listTaskDefinitionFamiliesResult = client.listContainerInstances(listContainerInstancesRequest);
-		//LOGGER.info("INFO -> " + listTaskDefinitionFamiliesResult.toString());
-
-		//DescribeContainerInstancesRequest describeContainerInstancesRequest = new DescribeContainerInstancesRequest();
-		//describeContainerInstancesRequest.setCluster("ecs-cluster-tef");
-
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
 		describeTasksRequest.setCluster("ecs-cluster-tef");
 
@@ -41,7 +29,7 @@ public class DemoApplication {
 
 		//List<Task> list = describeTasksResult.getTasks();
 
-		LOGGER.info("TESTE -> " + describeTasksResult.toString());
+		LOGGER.info("TESTE -> " + describeTasksResult);
 
 	}
 }
