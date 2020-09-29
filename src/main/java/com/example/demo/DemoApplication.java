@@ -30,7 +30,7 @@ public class DemoApplication {
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
 
-		LOGGER.info("TESTE -> " + describeTasksResult.toString());
+		LOGGER.info("TESTE -> " + describeTasksResult.getTasks());
 
 	}
 }
