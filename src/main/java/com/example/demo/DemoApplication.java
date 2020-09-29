@@ -82,6 +82,7 @@ public class DemoApplication {
 		String ip = reservations.get(0).getInstances().get(0).getPrivateIpAddress();
 
 		LOGGER.info("getName -> " + listTask.get(0).getContainers().get(0).getName());
+		LOGGER.info("getName -> " + listTask.get(0).getContainers().get(0).getRuntimeId());
 		LOGGER.info("listContainerInstance -> " + listContainerInstance);
 		LOGGER.info("ip -> " + ip);
 		LOGGER.info("port -> " + port);
