@@ -43,11 +43,15 @@ public class DemoApplication {
 		ListTasksResult listTasksResult = client.listTasks(listTasksRequest);
 		List<String> listString = listTasksResult.getTaskArns();
 
+		LOGGER.info("listTasksResult -> " + listTasksResult.toString());
+
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
 		describeTasksRequest.setCluster("ecs-cluster-tef");
 		describeTasksRequest.setTasks(listString);
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
+
+		LOGGER.info("describeTasksResult -> " + describeTasksResult.toString());
 
 		List<Task> listTask = describeTasksResult.getTasks();
 		List<Container> listContainer = listTask.get(0).getContainers();
@@ -61,6 +65,8 @@ public class DemoApplication {
 
 		DescribeContainerInstancesResult describeContainerInstancesResult = client.describeContainerInstances(describeContainerInstancesRequest);
 
+		LOGGER.info("describeContainerInstancesResult -> " + describeContainerInstancesResult.toString());
+
 		String listContainerInstance = describeContainerInstancesResult.getContainerInstances().get(0).getEc2InstanceId();
 
 		AmazonEC2 amazonEC2 = AmazonEC2ClientBuilder.standard().build();
@@ -69,6 +75,8 @@ public class DemoApplication {
 		describeInstancesRequestEc2.setInstanceIds(Arrays.asList(listContainerInstance));
 
 		DescribeInstancesResult describeInstancesResult = amazonEC2.describeInstances();
+
+		LOGGER.info("describeInstancesResult -> " + describeInstancesResult.toString());
 
 		List<Reservation> reservations = describeInstancesResult.getReservations();
 		String ip = reservations.get(0).getInstances().get(0).getPrivateIpAddress();
