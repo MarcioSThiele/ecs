@@ -33,7 +33,7 @@ public class DemoApplication {
 
 		DescribeContainerInstancesRequest describeContainerInstancesRequest = new DescribeContainerInstancesRequest();
 		describeContainerInstancesRequest.setCluster("ecs-cluster-tef");
-		describeContainerInstancesRequest.setContainerInstances(Arrays.asList("352c52c8ce1d48ebbebae3da4f6829b5"));
+		describeContainerInstancesRequest.setContainerInstances(Arrays.asList("arn:aws:ecs:sa-east-1:875256826423:container-instance/ecs-cluster-tef/41c15f1b3311469ca70290ca718ccbae"));
 
 		DescribeContainerInstancesResult describeContainerInstancesResult = client.describeContainerInstances(describeContainerInstancesRequest);
 
