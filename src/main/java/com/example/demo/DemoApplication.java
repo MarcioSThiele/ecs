@@ -1,10 +1,5 @@
 package com.example.demo;
 
-import com.amazonaws.services.ec2.AmazonEC2;
-import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
-import com.amazonaws.services.ec2.model.DescribeInstancesRequest;
-import com.amazonaws.services.ec2.model.DescribeInstancesResult;
-import com.amazonaws.services.ec2.model.Reservation;
 import com.amazonaws.services.ecs.AmazonECS;
 import com.amazonaws.services.ecs.AmazonECSClientBuilder;
 import com.amazonaws.services.ecs.model.*;
@@ -13,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -53,28 +47,31 @@ public class DemoApplication {
 		List<Container> listContainer = listTask.get(0).getContainers();
 
 		String containerArn = listContainer.get(0).getContainerArn();
-		int port = listContainer.get(0).getNetworkBindings().get(0).getHostPort();
 
-		DescribeContainerInstancesRequest describeContainerInstancesRequest = new DescribeContainerInstancesRequest();
-		describeContainerInstancesRequest.setCluster("ecs-cluster-tef");
-		describeContainerInstancesRequest.setContainerInstances(Arrays.asList(containerArn));
+		LOGGER.info("ContainerArn -> " + containerArn);
 
-		DescribeContainerInstancesResult describeContainerInstancesResult = client.describeContainerInstances(describeContainerInstancesRequest);
+		//int port = listContainer.get(0).getNetworkBindings().get(0).getHostPort();
 
-		String listContainerInstance = describeContainerInstancesResult.getContainerInstances().get(0).getEc2InstanceId();
+		//DescribeContainerInstancesRequest describeContainerInstancesRequest = new DescribeContainerInstancesRequest();
+		//describeContainerInstancesRequest.setCluster("ecs-cluster-tef");
+		//describeContainerInstancesRequest.setContainerInstances(Arrays.asList(containerArn));
 
-		AmazonEC2 amazonEC2 = AmazonEC2ClientBuilder.standard().build();
+		//DescribeContainerInstancesResult describeContainerInstancesResult = client.describeContainerInstances(describeContainerInstancesRequest);
 
-		DescribeInstancesRequest describeInstancesRequestEc2 = new DescribeInstancesRequest();
-		describeInstancesRequestEc2.setInstanceIds(Arrays.asList(listContainerInstance));
+		//String listContainerInstance = describeContainerInstancesResult.getContainerInstances().get(0).getEc2InstanceId();
 
-		DescribeInstancesResult describeInstancesResult = amazonEC2.describeInstances();
+		//AmazonEC2 amazonEC2 = AmazonEC2ClientBuilder.standard().build();
 
-		List<Reservation> reservations = describeInstancesResult.getReservations();
-		String ip = reservations.get(0).getInstances().get(0).getPrivateIpAddress();
+		//DescribeInstancesRequest describeInstancesRequestEc2 = new DescribeInstancesRequest();
+		//describeInstancesRequestEc2.setInstanceIds(Arrays.asList(listContainerInstance));
 
-		LOGGER.info("ip -> " + ip);
-		LOGGER.info("port -> " + port);
+		//DescribeInstancesResult describeInstancesResult = amazonEC2.describeInstances();
+
+		//List<Reservation> reservations = describeInstancesResult.getReservations();
+		//String ip = reservations.get(0).getInstances().get(0).getPrivateIpAddress();
+
+		//LOGGER.info("ip -> " + ip);
+		//LOGGER.info("port -> " + port);
 
 	}
 }
