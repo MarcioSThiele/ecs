@@ -76,5 +76,6 @@ public class DemoApplication {
 		LOGGER.info("listContainerInstance -> " + listContainerInstance);
 		LOGGER.info("ip -> " + ip);
 		LOGGER.info("port -> " + port);
+		LOGGER.info(reservations.toString());
 	}
 }
