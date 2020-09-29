@@ -35,5 +35,7 @@ public class DemoApplication {
 
 		List<Task> listTask = describeTasksResult.getTasks();
 
+		LOGGER.info("Teste: -> " + listTask.toString());
+
 	}
 }
