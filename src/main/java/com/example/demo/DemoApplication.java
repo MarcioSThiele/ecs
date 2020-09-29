@@ -4,12 +4,14 @@ import com.amazonaws.services.ecs.AmazonECS;
 import com.amazonaws.services.ecs.AmazonECSClientBuilder;
 import com.amazonaws.services.ecs.model.DescribeTasksRequest;
 import com.amazonaws.services.ecs.model.DescribeTasksResult;
+import com.amazonaws.services.ecs.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -30,7 +32,11 @@ public class DemoApplication {
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
 
-		LOGGER.info("TESTE -> " + describeTasksResult.getTasks());
+		List<Task> listTask = describeTasksResult.getTasks();
+
+		LOGGER.info("TESTE -> " + listTask.toString());
+
+
 
 	}
 }
