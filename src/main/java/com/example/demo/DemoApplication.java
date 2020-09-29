@@ -52,7 +52,7 @@ public class DemoApplication {
 		List<Task> listTask = describeTasksResult.getTasks();
 		List<Container> listContainer = listTask.get(0).getContainers();
 
-		String containerArn = listContainer.get(0).getContainerArn();
+		String containerArn = listTask.get(0).getContainerInstanceArn();
 		int port = listContainer.get(0).getNetworkBindings().get(0).getHostPort();
 
 		LOGGER.info("ContainerArn -> " + containerArn);
