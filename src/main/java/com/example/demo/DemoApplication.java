@@ -55,9 +55,6 @@ public class DemoApplication {
 		String containerArn = listTask.get(0).getContainerInstanceArn();
 		int port = listContainer.get(0).getNetworkBindings().get(0).getHostPort();
 
-		LOGGER.info("ContainerArn -> " + containerArn);
-		LOGGER.info("Port -> " + port);
-
 		DescribeContainerInstancesRequest describeContainerInstancesRequest = new DescribeContainerInstancesRequest();
 		describeContainerInstancesRequest.setCluster("ecs-cluster-tef");
 		describeContainerInstancesRequest.setContainerInstances(Arrays.asList(containerArn));
@@ -76,6 +73,7 @@ public class DemoApplication {
 		List<Reservation> reservations = describeInstancesResult.getReservations();
 		String ip = reservations.get(0).getInstances().get(0).getPrivateIpAddress();
 
+		LOGGER.info("listContainerInstance -> " + listContainerInstance);
 		LOGGER.info("ip -> " + ip);
 		LOGGER.info("port -> " + port);
 	}
