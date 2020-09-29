@@ -43,7 +43,7 @@ public class DemoApplication {
 		ListTasksResult listTasksResult = client.listTasks(listTasksRequest);
 		List<String> listString = listTasksResult.getTaskArns();
 
-		LOGGER.info("listTasksResult -> " + listTasksResult.toString());
+		//LOGGER.info("listTasksResult -> " + listTasksResult.toString());
 
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
 		describeTasksRequest.setCluster("ecs-cluster-tef");
@@ -51,7 +51,7 @@ public class DemoApplication {
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
 
-		LOGGER.info("describeTasksResult -> " + describeTasksResult.toString());
+		//LOGGER.info("describeTasksResult -> " + describeTasksResult.toString());
 
 		List<Task> listTask = describeTasksResult.getTasks();
 		List<Container> listContainer = listTask.get(0).getContainers();
@@ -65,7 +65,7 @@ public class DemoApplication {
 
 		DescribeContainerInstancesResult describeContainerInstancesResult = client.describeContainerInstances(describeContainerInstancesRequest);
 
-		LOGGER.info("describeContainerInstancesResult -> " + describeContainerInstancesResult.toString());
+		//LOGGER.info("describeContainerInstancesResult -> " + describeContainerInstancesResult.toString());
 
 		String listContainerInstance = describeContainerInstancesResult.getContainerInstances().get(0).getEc2InstanceId();
 
@@ -76,11 +76,12 @@ public class DemoApplication {
 
 		DescribeInstancesResult describeInstancesResult = amazonEC2.describeInstances();
 
-		LOGGER.info("describeInstancesResult -> " + describeInstancesResult.toString());
+		//LOGGER.info("describeInstancesResult -> " + describeInstancesResult.toString());
 
 		List<Reservation> reservations = describeInstancesResult.getReservations();
 		String ip = reservations.get(0).getInstances().get(0).getPrivateIpAddress();
 
+		LOGGER.info("getName -> " + listTask.get(0).getContainers().get(0).getName());
 		LOGGER.info("listContainerInstance -> " + listContainerInstance);
 		LOGGER.info("ip -> " + ip);
 		LOGGER.info("port -> " + port);
