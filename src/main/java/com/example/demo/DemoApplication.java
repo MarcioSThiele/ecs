@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class DemoApplication {
 
@@ -23,10 +25,12 @@ public class DemoApplication {
 		AmazonECS client = AmazonECSClientBuilder.standard().build();
 
 		DescribeTasksRequest describeTasksRequest = new DescribeTasksRequest();
+		describeTasksRequest.setCluster("ecs-cluster-tef");
+		describeTasksRequest.setTasks(Arrays.asList("0190504cd8a548858121e7a53976c632"));
 
 		DescribeTasksResult describeTasksResult = client.describeTasks(describeTasksRequest);
 
-		LOGGER.info("TESTE -> " + describeTasksResult);
+		LOGGER.info("TESTE -> " + describeTasksResult.toString());
 
 	}
 }
